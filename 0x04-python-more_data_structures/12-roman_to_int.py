@@ -9,6 +9,7 @@ def to_subtract(list_num):
 
     return (max_list - to_sub)
 
+
 def roman_to_int(roman_string):
     if not roman_string:
         return 0
@@ -24,14 +25,16 @@ def roman_to_int(roman_string):
     list_num = [0]
 
     for ch in roman_string:
-        if ch in list_keys:
-            if rom_n[ch] <= last_rom:
-                num += to_subtract(list_num)
-                list_num = [rom_n[ch]]
-            else:
-                list_num.append(rom_n[ch])
+        for r_num in list_keys:
+            if r_num == ch:
+                if rom_n.get(ch) <= last_rom:
+                    num += to_subtract(list_num)
+                    list_num = [rom_n.get(ch)]
+                else:
+                    list_num.append(rom_n.get(ch))
 
-            last_rom = rom_n[ch]
+                last_rom = rom_n.get(ch)
 
     num += to_subtract(list_num)
-    return num
+
+    return (num)
